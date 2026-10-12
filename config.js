@@ -3,6 +3,6 @@
 export const FORM_URL = ''
 
 export const CONTACT = {
-  email: 'hello@nam.example',
-  phone: '+254 700 000 000',
+  email: 'aidenhandson@gmail.com,
+  phone: '+254 794299566',
 }
