@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import { FORM_URL, CONTACT } from './config.js'
+import { FORM_URL, CONTACT, FOUNDER, WA_LINK, IG_LINK, MAIL_LINK } from './config.js'
 import {
   NAV, SKILLS, PILLARS, WE_WANT, NOT_FOR, DEPARTMENTS, STEPS, WORKS,
-  PRINCIPLES, FAQ, STATUS_OPTIONS, DEPT_OPTIONS,
+  PRINCIPLES, FAQ, STATUS_OPTIONS, DEPT_OPTIONS, ROADMAP,
 } from './data.js'
 
 // This file holds every section of the page. Each section is one function below.
@@ -218,6 +218,77 @@ function Vision() {
 
 const EMPTY = { name: '', phone: '', email: '', status: '', campus: '', department: '', link: '', idea: '' }
 
+/* ---------- small icons ---------- */
+const WaIcon = () => (
+  <svg className="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.2A8.5 8.5 0 1 1 20 11.5z" /><path d="M9.3 9c.3 2 1.800 3.800 4.300 4.700l1.200-1.200" /></svg>
+)
+const IgIcon = () => (
+  <svg className="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.200" cy="6.800" r=".6" /></svg>
+)
+const MailIcon = () => (
+  <svg className="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" /><path d="M4 7.500l8 6 8-6" /></svg>
+)
+
+/* ---------- Roadmap ---------- */
+function Roadmap() {
+  return (
+    <section className="road" id="updates">
+      <div className="wrap">
+        <div className="kicker">OUR JOURNEY</div>
+        <h2>Where we are, and where we are going.</h2>
+        <p className="lead">NAM is just beginning. These are our plans, and we will update this section as each stage is reached.</p>
+        <div className="road-grid">
+          {ROADMAP.map((r, i) => (
+            <div className={'stage' + (r.now ? ' now' : '')} key={r.t}>
+              <span className="dotm">{i + 1}</span>
+              {r.now && <em className="here">We are here</em>}
+              <h3>{r.t}</h3>
+              <p>{r.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ---------- Founder ---------- */
+function Founder() {
+  return (
+    <section className="founder" id="founder">
+      <div className="wrap">
+        <div className="f-card">
+          <div className="f-av" aria-hidden="true">{FOUNDER.initials}</div>
+          <h3>{FOUNDER.name}</h3>
+          <p>{FOUNDER.role}</p>
+          <div className="f-links">
+            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><WaIcon /></a>
+            <a href={IG_LINK} target="_blank" rel="noopener noreferrer" aria-label="Instagram"><IgIcon /></a>
+            <a href={MAIL_LINK} aria-label="Email"><MailIcon /></a>
+          </div>
+        </div>
+        <div className="f-msg">
+          <div className="kicker">WHY I STARTED NAM</div>
+          <h2>A note from the founder.</h2>
+          <p>I am a student, and I keep seeing the same story on campus. Talented people finish school with real skills and nowhere to use them, waiting for jobs that do not come. At the same time, I keep meeting people who can build apps, design brands, fix electronics, edit films and make things that make you say wow, and most of them work alone.</p>
+          <p>NAM started from a simple question: what if we stopped waiting and put all that talent in one place? Not judged by certificates, but by what you can actually do. Give people a department, a team and a real project, and an idea that was stuck in one head becomes something a whole group builds.</p>
+          <p>I believe Africa's young minds can build the products we buy from other countries. We start with software and services, then grow step by step toward making our own things, with our own people. If you have a skill you are proud of, I would love to see it.</p>
+          <p className="sig"><b>{FOUNDER.name}</b><br />{FOUNDER.role}</p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ---------- Floating WhatsApp button ---------- */
+function WhatsAppFloat() {
+  return (
+    <a className="wa-float" href={WA_LINK} target="_blank" rel="noopener noreferrer" aria-label="Chat with NAM on WhatsApp">
+      <WaIcon /><span>Chat on WhatsApp</span>
+    </a>
+  )
+}
+
 function Apply() {
   const [form, setForm] = useState(EMPTY)
   const [sent, setSent] = useState(false)
@@ -260,6 +331,10 @@ function Apply() {
             <li>Tell us which department you think you fit</li>
             <li>We reply to every application</li>
           </ul>
+          <div className="wa-cta">
+            <p>Prefer to talk first? Message us on WhatsApp.</p>
+            <a className="btn btn-wa" href={WA_LINK} target="_blank" rel="noopener noreferrer"><WaIcon /> Chat on WhatsApp</a>
+          </div>
         </div>
 
         <form className="f" onSubmit={submit}>
@@ -291,6 +366,7 @@ function Apply() {
             <textarea rows="4" required value={form.idea} onChange={set('idea')} />
           </label>
           <button className="btn btn-fire" type="submit" disabled={busy}>{busy ? 'Sending...' : 'Send my application'}</button>
+          <p className="privacy">We only use your details to review your application and contact you about NAM. We do not sell your information.</p>
           {sent && <div className="ok" style={{ display: 'block' }} role="status">Thank you. We have your application and the NAM team will be in touch soon.</div>}
           {error && <div className="ok" style={{ display: 'block', background: '#fde7e2', color: '#8a2a10' }} role="alert">{error}</div>}
         </form>
@@ -323,6 +399,11 @@ function Footer() {
           <div>
             <a className="logo" href="#top"><i>N</i>NAM</a>
             <p style={{ marginTop: 16, maxWidth: '36ch' }}>Networking African Makers. A community of young builders turning skill into products.</p>
+            <div className="social">
+              <a href={WA_LINK} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><WaIcon /></a>
+              <a href={IG_LINK} target="_blank" rel="noopener noreferrer" aria-label="Instagram"><IgIcon /></a>
+              <a href={MAIL_LINK} aria-label="Email"><MailIcon /></a>
+            </div>
           </div>
           <div>
             <h4>Explore</h4>
@@ -331,13 +412,15 @@ function Footer() {
               <li><a href="#who">Who joins</a></li>
               <li><a href="#departments">Departments</a></li>
               <li><a href="#showcase">Showcase</a></li>
+              <li><a href="#founder">From the founder</a></li>
             </ul>
           </div>
           <div>
             <h4>Contact</h4>
             <ul>
-              <li>{CONTACT.email}</li>
-              <li>{CONTACT.phone}</li>
+              <li><a href={MAIL_LINK}>{CONTACT.email}</a></li>
+              <li><a href={WA_LINK} target="_blank" rel="noopener noreferrer">WhatsApp {CONTACT.phone}</a></li>
+              <li><a href={IG_LINK} target="_blank" rel="noopener noreferrer">Instagram @{CONTACT.instagram}</a></li>
               <li><a href="#apply">Apply to join</a></li>
             </ul>
           </div>
@@ -362,11 +445,14 @@ export default function App() {
         <Departments />
         <How />
         <Showcase />
+        <Roadmap />
         <Vision />
+        <Founder />
         <Apply />
         <Faq />
       </main>
       <Footer />
+      <WhatsAppFloat />
     </>
   )
 }

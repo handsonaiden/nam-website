@@ -205,3 +205,49 @@ footer a:hover{color:var(--sun)}
   .dept-grid,.flow,.two,footer .cols{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* ===== v2 additions: icons, WhatsApp, founder, roadmap, social, privacy ===== */
+.ico{width:1.15em;height:1.15em;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.btn-wa{background:#25d366;color:#06361b;display:inline-flex;align-items:center;gap:10px}
+.btn-wa:hover{background:#3be07a}
+.wa-cta{margin-top:34px;padding-top:26px;border-top:1px solid #d9d2c0}
+.wa-cta p{margin-bottom:14px;font-weight:500}
+.privacy{font-size:.85rem;color:#6b6f63;line-height:1.5}
+
+.wa-float{position:fixed;left:18px;bottom:20px;z-index:65;height:58px;min-width:58px;border-radius:999px;background:#25d366;color:#06361b;display:flex;align-items:center;justify-content:center;gap:10px;padding:0 17px;text-decoration:none;font-weight:700;box-shadow:0 10px 28px rgba(0,0,0,.5);transition:transform .15s,background .2s}
+.wa-float .ico{width:26px;height:26px;stroke-width:2.1}
+.wa-float span{display:none;font-size:.95rem}
+.wa-float:hover{background:#3be07a;transform:translateY(-2px)}
+@media(min-width:760px){.wa-float span{display:inline}}
+
+.road{background:var(--bg2);border-block:1px solid var(--line)}
+.road-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+.stage{position:relative;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px 26px}
+.stage.now{border-color:var(--fire);box-shadow:0 0 0 4px rgba(255,90,31,.12)}
+.dotm{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--bg);border:1px solid var(--line);font:700 1rem var(--head);color:var(--sun);margin-bottom:18px}
+.stage.now .dotm{background:var(--fire);color:#fff;border-color:var(--fire)}
+.here{position:absolute;top:30px;right:24px;font-style:normal;font-size:.78rem;font-weight:700;color:var(--fire);border:1px solid var(--fire);padding:3px 11px;border-radius:999px}
+.stage h3{font-size:1.1rem;margin-bottom:8px}
+.stage p{color:var(--muted);font-size:.97rem}
+
+.founder .wrap{display:grid;grid-template-columns:320px 1fr;gap:56px;align-items:start}
+.f-card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:34px 28px;text-align:center;position:sticky;top:96px}
+.f-av{width:132px;height:132px;margin:0 auto 20px;border-radius:34px;background:linear-gradient(140deg,var(--fire),#c43c0a);display:grid;place-items:center;font:900 2.6rem var(--head);color:#fff;transform:rotate(-4deg)}
+.f-card h3{font-size:1.3rem}
+.f-card p{color:var(--muted);margin-top:4px}
+.f-links,.social{display:flex;gap:10px;justify-content:center;margin-top:22px}
+.social{justify-content:flex-start}
+.f-links a,.social a{width:46px;height:46px;border-radius:14px;border:1px solid var(--line);display:grid;place-items:center;color:var(--text);transition:border-color .2s,color .2s,transform .15s}
+.f-links a:hover,.social a:hover{border-color:var(--sun);color:var(--sun);transform:translateY(-2px)}
+.f-links .ico,.social .ico{width:22px;height:22px}
+.f-msg p{color:var(--text);margin-top:20px;max-width:62ch}
+.f-msg h2{max-width:16ch}
+.f-msg .sig{margin-top:28px;color:var(--muted)}
+.f-msg .sig b{color:#fff;font-family:var(--head)}
+
+@media(max-width:980px){
+  .road-grid{grid-template-columns:1fr}
+  .founder .wrap{grid-template-columns:1fr;gap:34px}
+  .f-card{position:static;max-width:420px}
+}
+@media(max-width:480px){.wa-float{left:14px;bottom:14px}}

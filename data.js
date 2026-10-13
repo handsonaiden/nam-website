@@ -71,3 +71,9 @@ export const FAQ = [
 
 export const STATUS_OPTIONS = ['Currently in campus', 'Graduated within 2 years', 'No degree, self-taught']
 export const DEPT_OPTIONS = ['Software and Apps','AI and Automation','Design and Brand','Electronics and Robotics','Content and Media','Business and Growth','Fabrication and Craft','Learning and Training','Not sure yet']
+
+export const ROADMAP = [
+  { now: true, t: 'Gather the first makers', d: 'We are inviting our first group of students, graduates and self-taught builders across a few departments.' },
+  { t: 'Build the first real project', d: 'Small cross-department teams take on a real brief, build it together and ship it.' },
+  { t: 'Grow into products', d: 'From software and services toward devices and goods, designed and made in Africa by our own people.' },
+]
